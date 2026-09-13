@@ -1,0 +1,50 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+
+    # Client Tests
+    - name: Install Client Dependencies
+      run: npm ci
+      working-directory: ./client
+
+    - name: Run Client Unit Tests
+      run: npm run test
+      working-directory: ./client
+
+    # Server Tests
+    - name: Install Server Dependencies
+      run: npm ci
+      working-directory: ./server
+
+    - name: Run Server API Tests
+      run: npm run test
+      working-directory: ./server
+
+    # E2E Tests
+    - name: Install Root Dependencies
+      run: npm install
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps chromium
+
+    - name: Run End-to-End Tests
+      run: npx playwright test

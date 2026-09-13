@@ -1,0 +1,81 @@
+/**
+ * Active screen/node data.
+ * Structured to match the future /api/screens endpoint shape
+ * so the swap from static → API requires zero component changes.
+ */
+const nodes = [
+  {
+    id: 'node-001',
+    venueName: 'Greenleaf Café',
+    venueType: 'Café',
+    city: 'Nadiad',
+    address: 'Station Road, Nadiad 387001',
+    status: 'live',
+    resolution: '1920×1080',
+    footTraffic: '~240/hr',
+    screenSize: '43"',
+    image: null,
+  },
+  {
+    id: 'node-002',
+    venueName: 'Royal Electronics',
+    venueType: 'Retail Store',
+    city: 'Surat',
+    address: 'Ring Road, Surat 395002',
+    status: 'live',
+    resolution: '1920×1080',
+    footTraffic: '~180/hr',
+    screenSize: '55"',
+    image: null,
+  },
+  {
+    id: 'node-003',
+    venueName: 'Madhav Gym & Fitness',
+    venueType: 'Gym',
+    city: 'Nadiad',
+    address: 'College Road, Nadiad 387001',
+    status: 'live',
+    resolution: '1920×1080',
+    footTraffic: '~120/hr',
+    screenSize: '43"',
+    image: null,
+  },
+  {
+    id: 'node-004',
+    venueName: 'Taste of Gujarat',
+    venueType: 'Restaurant',
+    city: 'Surat',
+    address: 'Athwa Gate, Surat 395001',
+    status: 'live',
+    resolution: '3840×2160',
+    footTraffic: '~310/hr',
+    screenSize: '65"',
+    image: null,
+  },
+  {
+    id: 'node-005',
+    venueName: 'Shreeji Supermarket',
+    venueType: 'Supermarket',
+    city: 'Nadiad',
+    address: 'Patel Chowk, Nadiad 387001',
+    status: 'pending',
+    resolution: '1920×1080',
+    footTraffic: '~400/hr',
+    screenSize: '55"',
+    image: null,
+  },
+  {
+    id: 'node-006',
+    venueName: 'Nexus Co-Working',
+    venueType: 'Co-Working Space',
+    city: 'Surat',
+    address: 'Vesu, Surat 395007',
+    status: 'live',
+    resolution: '1920×1080',
+    footTraffic: '~90/hr',
+    screenSize: '43"',
+    image: null,
+  },
+];
+
+export default nodes;
