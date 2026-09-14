@@ -34,3 +34,27 @@ export const getLeads = catchAsync(async (req, res) => {
     data: leads
   });
 });
+
+export const updateLeadStatus = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const validStatuses = ['new', 'contacted', 'converted', 'rejected'];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ success: false, message: 'Invalid status value' });
+  }
+
+  const lead = await Lead.findByIdAndUpdate(
+    id,
+    { status },
+    { new: true, runValidators: true }
+  );
+
+  if (!lead) {
+    return res.status(404).json({ success: false, message: 'Lead not found' });
+  }
+
+  logger.info('Lead Status Updated', { id, status });
+
+  res.status(200).json({ success: true, data: lead });
+});

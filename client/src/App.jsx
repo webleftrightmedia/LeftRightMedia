@@ -5,8 +5,14 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import PlaceholderPage from './pages/PlaceholderPage';
 import ThankYou from './pages/ThankYou';
+import Admin from './pages/Admin';
 
 const router = createBrowserRouter([
+  // Admin panel — completely separate from the public layout
+  {
+    path: '/admin',
+    element: <Admin />,
+  },
   {
     path: '/',
     element: <RootLayout />,

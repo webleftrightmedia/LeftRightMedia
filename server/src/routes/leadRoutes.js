@@ -1,5 +1,5 @@
 import express from 'express';
-import { createLead, getLeads } from '../controllers/leadController.js';
+import { createLead, getLeads, updateLeadStatus } from '../controllers/leadController.js';
 import { validateRequest } from '../middleware/validate.js';
 import { requireAdmin } from '../middleware/auth.js';
 import { leadSubmitLimiter } from '../middleware/rateLimiter.js';
@@ -23,5 +23,8 @@ router.post('/', leadSubmitLimiter, validateRequest(baseSchema), createLead);
 
 // GET /api/leads - Fetch leads (Admin only)
 router.get('/', requireAdmin, getLeads);
+
+// PATCH /api/leads/:id - Update lead status (Admin only)
+router.patch('/:id', requireAdmin, updateLeadStatus);
 
 export default router;
