@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Container, Button } from './ui';
+import { Container, Button, Logo } from './ui';
 import { Menu, X } from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
 
@@ -130,7 +130,7 @@ export default function Navbar() {
             ref={el => navRefs.current['logo'] = el}
             onClick={() => setActiveSection('logo')}
           >
-            <img src="/logo.png" alt="LeftRight Media Logo" className="w-7 h-7 object-contain" />
+            <img src="/arrow2-removebg.png" alt="LeftRight Media Logo" className="w-7 h-7 object-contain" />
             <span className="font-display font-bold text-lg tracking-tight">
               LeftRight Media
             </span>

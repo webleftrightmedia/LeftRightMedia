@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button } from './ui';
+import { Container, Button, Logo } from './ui';
 
 const footerLinks = {
   Product: [
@@ -58,7 +58,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="/" className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="LeftRight Media Logo" className="w-7 h-7 object-contain" />
+              <img src="/arrow2-removebg.png" alt="LeftRight Media Logo" className="w-7 h-7 object-contain" />
               <span className="font-display font-bold text-lg tracking-tight">
                 LeftRight Media
               </span>
