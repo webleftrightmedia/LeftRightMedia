@@ -177,7 +177,7 @@ export default function Navbar() {
 
       {/* Mobile overlay */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-16 z-40 bg-concrete-white animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="lg:hidden fixed inset-0 top-16 z-40 backdrop-blur-xl bg-white/80 border-t border-white/20 animate-in fade-in slide-in-from-top-2 duration-300 overflow-y-auto">
           <Container className="py-8 flex flex-col gap-6">
             <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
               {navLinks.map((link) => (
