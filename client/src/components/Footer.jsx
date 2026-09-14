@@ -58,9 +58,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 bg-ink rounded-[3px] flex items-center justify-center">
-                <span className="text-white font-display font-bold text-xs">LR</span>
-              </div>
+              <img src="/logo.png" alt="LeftRight Media Logo" className="w-7 h-7 object-contain" />
               <span className="font-display font-bold text-lg tracking-tight">
                 LeftRight Media
               </span>

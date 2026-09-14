@@ -130,9 +130,7 @@ export default function Navbar() {
             ref={el => navRefs.current['logo'] = el}
             onClick={() => setActiveSection('logo')}
           >
-            <div className="w-7 h-7 bg-ink rounded-[3px] flex items-center justify-center">
-              <span className="text-white font-display font-bold text-xs">LR</span>
-            </div>
+            <img src="/logo.png" alt="LeftRight Media Logo" className="w-7 h-7 object-contain" />
             <span className="font-display font-bold text-lg tracking-tight">
               LeftRight Media
             </span>
