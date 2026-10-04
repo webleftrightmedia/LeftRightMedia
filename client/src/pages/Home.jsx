@@ -1,29 +1,46 @@
-import React, { lazy, Suspense } from 'react';
-import Hero from '../components/Hero';
-import ValueProps from '../components/ValueProps';
-import SplitArchitectureDemo from '../components/SplitArchitectureDemo';
+import React from 'react';
+import {
+  HeroSection,
+  PlatformSection,
+  ImpactSection,
+  AudienceSelectorSection,
+  CampaignBuilderSection,
+  ScreenPartnersSection,
+  EventsIntroSection,
+  EventCapabilitiesSection,
+  EventScreenSection,
+  PhysicalDigitalSection,
+  ContentTypesSection,
+  WhyLrmSection,
+  DayTimelineSection,
+  ProofSection,
+  PathSelectionSection,
+  FinalCtaSection,
+} from '../components/homepage';
 
-// Lazy load below-the-fold components
-const ActiveNodes = lazy(() => import('../components/ActiveNodes'));
-const PricingSnapshot = lazy(() => import('../components/PricingSnapshot'));
-const TrustSignals = lazy(() => import('../components/TrustSignals'));
-const LeadCaptureForm = lazy(() => import('../components/LeadCaptureForm'));
-const FAQ = lazy(() => import('../components/FAQ'));
-
+/**
+ * Homepage — exact storytelling sequence per master specification.
+ * Sections 01–18 in order.
+ */
 export default function Home() {
   return (
     <>
-      <Hero />
-      <ValueProps />
-      <SplitArchitectureDemo />
-      
-      <Suspense fallback={<div className="h-64 animate-pulse bg-concrete flex items-center justify-center text-ink-muted">Loading modules...</div>}>
-        <ActiveNodes />
-        <PricingSnapshot />
-        <TrustSignals />
-        <LeadCaptureForm />
-        <FAQ />
-      </Suspense>
+      {/* 01 */ } <HeroSection />
+      {/* 02 */ } <PlatformSection />
+      {/* 04 */ } <ImpactSection />
+      {/* 05 */ } <AudienceSelectorSection />
+      {/* 06 */ } <CampaignBuilderSection />
+      {/* 08 */ } <ScreenPartnersSection />
+      {/* 09 */ } <EventsIntroSection />
+      {/* 10 */ } <EventCapabilitiesSection />
+      {/* 11 */ } <EventScreenSection />
+      {/* 12 */ } <PhysicalDigitalSection />
+      {/* 13 */ } <ContentTypesSection />
+      {/* 14 */ } <WhyLrmSection />
+      {/* 15 */ } <DayTimelineSection />
+      {/* 16 */ } <ProofSection />
+      {/* 17 */ } <PathSelectionSection />
+      {/* 18 */ } <FinalCtaSection />
     </>
   );
 }

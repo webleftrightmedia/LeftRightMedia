@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Security Middleware
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+app.use(cors());
 
 // Apply rate limiter to all requests
 app.use('/api', apiLimiter);

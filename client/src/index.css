@@ -349,3 +349,24 @@
 @utility animate-container-pop {
   animation: container-pop 0.4s ease-out forwards;
 }
+
+/* Rolling marquee animation for signature statement */
+@keyframes rolling-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Accessibility: Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

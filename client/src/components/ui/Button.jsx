@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const variants = {
   solid: {
@@ -65,8 +66,17 @@ export default function Button({
     .join(' ');
 
   if (href) {
+    // Internal links use React Router Link for client-side navigation
+    const isInternal = href.startsWith('/') && !href.startsWith('//');
+    if (isInternal) {
+      return (
+        <Link to={href} className={baseClasses} onClick={onClick} {...props}>
+          {children}
+        </Link>
+      );
+    }
     return (
-      <a href={href} className={baseClasses} {...props}>
+      <a href={href} className={baseClasses} onClick={onClick} {...props}>
         {children}
       </a>
     );

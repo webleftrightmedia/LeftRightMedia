@@ -1,23 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Button, Logo } from './ui';
 
 const footerLinks = {
-  Product: [
-    { label: 'How It Works', href: '#split-architecture' },
-    { label: 'Active Screens', href: '#active-nodes' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'FAQ', href: '#faq' },
+  Platform: [
+    { label: 'Advertise', href: '/advertise' },
+    { label: 'Screen Partners', href: '/screen-partners' },
+    { label: 'LRM Events', href: '/events' },
   ],
   Company: [
     { label: 'About Us', href: '/about' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Careers', href: '/careers' },
-    { label: 'Contact', href: '#lead-form' },
+    { label: 'Contact', href: '/contact' },
   ],
   Legal: [
     { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Terms of Service', href: '/terms' },
-    { label: 'Refund Policy', href: '/refund' },
   ],
 };
 
@@ -38,16 +35,16 @@ export default function Footer() {
             <Button
               variant="signal"
               size="lg"
-              href="#lead-form"
+              href="/advertise"
             >
               Launch Your First Ad →
             </Button>
-            <a
-              href="#lead-form"
+            <Link
+              to="/screen-partners"
               className="inline-flex items-center text-body-lg text-white/80 hover:text-white underline underline-offset-4 py-3 px-4"
             >
               or list your screen — it's free
-            </a>
+            </Link>
           </div>
         </Container>
       </div>
@@ -57,12 +54,12 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <a href="/" className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-4">
               <img src="/arrow2-removebg.png" alt="LeftRight Media Logo" className="w-7 h-7 object-contain" />
               <span className="font-display font-bold text-lg tracking-tight">
                 LeftRight Media
               </span>
-            </a>
+            </Link>
             <p className="text-body-sm text-ink-muted max-w-xs">
               Turning idle screens into local ad networks
               across small-town India.
@@ -76,12 +73,12 @@ export default function Footer() {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       className="text-body-md text-ink-muted hover:text-ink transition-none"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

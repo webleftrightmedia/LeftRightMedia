@@ -1,55 +1,39 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Container, Button, Logo } from './ui';
 import { Menu, X } from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
 
 const navLinks = [
-  { label: 'How It Works', href: '#split-architecture' },
-  { label: 'Locations', href: '#active-nodes' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Advertise', href: '/advertise' },
+  { label: 'Screen Partners', href: '/screen-partners' },
+  { label: 'LRM Events', href: '/events' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const location = useLocation();
+  const [activeSection, setActiveSection] = useState(location.pathname === '/' ? 'logo' : location.pathname);
 
   const [dotStyle, setDotStyle] = useState({ left: 0, width: 5, opacity: 0 });
   const navRefs = useRef({});
   const prevLeft = useRef(null);
   const animTimer = useRef(null);
 
-  // Scroll-spy: find whichever section top is nearest above the viewport center
+  // Update active section on route change + close mobile menu
   useEffect(() => {
-    const NAVBAR_H = 64;
-    const TRIGGER = NAVBAR_H + Math.round(window.innerHeight * 0.15); // 15% below navbar
+    setActiveSection(location.pathname === '/' ? 'logo' : location.pathname);
+    setMobileOpen(false);
+  }, [location.pathname]);
 
-    const getActive = () => {
-      if (window.scrollY < 80) {
-        return 'logo';
-      }
-
-      let current = navLinks[0].href;
-      for (const link of navLinks) {
-        const id = link.href.substring(1);
-        const el = document.getElementById(id);
-        if (!el) continue;
-        const top = el.getBoundingClientRect().top;
-        if (top <= TRIGGER) {
-          current = link.href;
-        }
-      }
-      return current;
-    };
-
+  useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 10);
-      setActiveSection(getActive());
     };
 
-    // Set on mount
-    setActiveSection(getActive());
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -98,7 +82,7 @@ export default function Navbar() {
     <>
       <header
         className={[
-          'sticky top-0 z-50 bg-concrete-white border-b border-slate-border',
+          'sticky top-0 z-[998] bg-concrete-white border-b border-slate-border',
           scrolled ? 'bg-concrete-white/95 backdrop-blur-sm' : '',
         ].join(' ')}
       >
@@ -116,8 +100,8 @@ export default function Navbar() {
             />
 
             {/* Logo */}
-            <a 
-              href="/" 
+            <Link 
+              to="/" 
               className="flex items-center gap-2 cursor-pointer z-10"
               ref={el => navRefs.current['logo'] = el}
               onClick={() => setActiveSection('logo')}
@@ -126,14 +110,14 @@ export default function Navbar() {
               <span className="font-display font-bold text-lg tracking-tight">
                 LeftRight Media
               </span>
-            </a>
+            </Link>
 
             {/* Desktop nav */}
             <nav className="hidden lg:flex items-center gap-8 h-full" aria-label="Main navigation">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   ref={el => navRefs.current[link.href] = el}
                   className={[
                     'text-body-md transition-colors duration-200 z-10 flex items-center h-full',
@@ -141,18 +125,15 @@ export default function Navbar() {
                   ].join(' ')}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="outline" size="sm" href="#lead-form" onClick={() => trackEvent('cta_click', { placement: 'navbar', type: 'host' })}>
-              List Your Screen
-            </Button>
-            <Button variant="solid" size="sm" href="#lead-form" onClick={() => trackEvent('cta_click', { placement: 'navbar', type: 'advertiser' })}>
-              Run an Ad
+            <Button variant="solid" size="sm" href="/advertise" onClick={() => trackEvent('cta_click', { placement: 'navbar', type: 'advertiser' })}>
+              Start Advertising →
             </Button>
           </div>
 
@@ -171,7 +152,7 @@ export default function Navbar() {
       {/* Mobile overlay — outside <header> to escape backdrop-filter stacking context */}
       {mobileOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-40 overflow-y-auto"
+          className="lg:hidden fixed inset-0 z-[999] overflow-y-auto"
           style={{
             top: '64px',
             backdropFilter: 'blur(20px)',
@@ -183,38 +164,27 @@ export default function Navbar() {
           <Container className="py-8 flex flex-col gap-6">
             <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   className="text-headline-sm py-3 border-b border-slate-border"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
             <div className="flex flex-col gap-3 pt-4">
               <Button 
                 variant="solid" 
                 size="lg" 
-                href="#lead-form" 
+                href="/advertise" 
                 onClick={() => {
                   setMobileOpen(false);
                   trackEvent('cta_click', { placement: 'mobile_nav', type: 'advertiser' });
                 }}
               >
-                Explore Ad Inventory
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                href="#lead-form" 
-                onClick={() => {
-                  setMobileOpen(false);
-                  trackEvent('cta_click', { placement: 'mobile_nav', type: 'host' });
-                }}
-              >
-                Monetize Your Screen
+                Start Advertising →
               </Button>
             </div>
           </Container>
