@@ -10,7 +10,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: CLIENT_ORIGIN
-        value: https://leftrightmedia.in
+        value: https://leftrightmedia.in,https://www.leftrightmedia.in
       - key: MONGO_URI
         sync: false
       - key: PORT

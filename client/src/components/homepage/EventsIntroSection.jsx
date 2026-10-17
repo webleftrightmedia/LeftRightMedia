@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, SectionLabel } from '../ui';
+import { Container } from '../ui';
 
 /**
  * Section 09 — LRM Events Introduction.

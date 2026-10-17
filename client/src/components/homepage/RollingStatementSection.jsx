@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { rollingStatement } from '../../data/homepage';
 
 /**
@@ -7,18 +7,15 @@ import { rollingStatement } from '../../data/homepage';
  * Uses a CSS-driven infinite scroll for performance.
  */
 export default function RollingStatementSection() {
-  const trackRef = useRef(null);
-
   // Duplicate content for seamless loop
   const repeated = `${rollingStatement}  ·  ${rollingStatement}  ·  ${rollingStatement}  ·  ${rollingStatement}  ·  `;
 
   return (
-    <section className="bg-ink overflow-hidden py-5 select-none" aria-label="Brand statement">
+    <section className="bg-ink overflow-hidden py-4 select-none border-y border-white/10" aria-label="Brand statement">
       <div
-        ref={trackRef}
-        className="flex whitespace-nowrap"
+        className="flex w-max whitespace-nowrap hover:[animation-play-state:paused]"
         style={{
-          animation: 'rolling-scroll 20s linear infinite',
+          animation: 'rolling-scroll 24s linear infinite',
         }}
       >
         <span className="text-label-lg text-white/90 tracking-[0.08em] shrink-0 pr-4">

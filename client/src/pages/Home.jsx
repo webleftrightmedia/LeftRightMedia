@@ -17,30 +17,34 @@ import {
   PathSelectionSection,
   FinalCtaSection,
 } from '../components/homepage';
+import TrustSignals from '../components/TrustSignals';
+import FAQ from '../components/FAQ';
 
 /**
  * Homepage — exact storytelling sequence per master specification.
- * Sections 01–18 in order.
+ * Seamless narrative flow with alternating contrast and high engagement.
  */
 export default function Home() {
   return (
     <>
-      {/* 01 */ } <HeroSection />
-      {/* 02 */ } <PlatformSection />
-      {/* 04 */ } <ImpactSection />
-      {/* 05 */ } <AudienceSelectorSection />
-      {/* 06 */ } <CampaignBuilderSection />
-      {/* 08 */ } <ScreenPartnersSection />
-      {/* 09 */ } <EventsIntroSection />
-      {/* 10 */ } <EventCapabilitiesSection />
-      {/* 11 */ } <EventScreenSection />
-      {/* 12 */ } <PhysicalDigitalSection />
-      {/* 13 */ } <ContentTypesSection />
-      {/* 14 */ } <WhyLrmSection />
-      {/* 15 */ } <DayTimelineSection />
-      {/* 16 */ } <ProofSection />
-      {/* 17 */ } <PathSelectionSection />
-      {/* 18 */ } <FinalCtaSection />
+      {/* 01 Hero */} <HeroSection />
+      {/* 02 Platform Architecture */} <PlatformSection />
+      {/* 04 Network Impact */} <ImpactSection />
+      {/* 05 Audience Selector */} <AudienceSelectorSection />
+      {/* 06 Interactive Campaign Builder */} <CampaignBuilderSection />
+      {/* 07 Screen Partners Value Flow */} <ScreenPartnersSection />
+      {/* 08 Events Introduction */} <EventsIntroSection />
+      {/* 09 Event Capabilities */} <EventCapabilitiesSection />
+      {/* 10 Event Screen Preview */} <EventScreenSection />
+      {/* 11 Physical-Digital Integration */} <PhysicalDigitalSection />
+      {/* 12 Dynamic Content Types */} <ContentTypesSection />
+      {/* 13 Strategic Pillars */} <WhyLrmSection />
+      {/* 14 Day in the Life Timeline */} <DayTimelineSection />
+      {/* 15 Network Expansion Status */} <ProofSection />
+      {/* 16 Ground-level Trust & Proof */} <TrustSignals />
+      {/* 17 Audience Path Routing */} <PathSelectionSection />
+      {/* 18 Frequently Asked Questions */} <FAQ />
+      {/* 19 Final Monolithic Call to Action */} <FinalCtaSection />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Button, Logo } from './ui';
+import { Container, Button } from './ui';
 
 const footerLinks = {
   Platform: [
@@ -92,13 +92,13 @@ export default function Footer() {
             © {new Date().getFullYear()} LeftRight Media. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="https://twitter.com" className="text-body-sm text-ink-muted hover:text-ink" target="_blank" rel="noopener noreferrer">
+            <a href="https://twitter.com/leftrightmedia" className="text-body-sm text-ink-muted hover:text-ink" target="_blank" rel="noopener noreferrer">
               Twitter
             </a>
-            <a href="https://linkedin.com" className="text-body-sm text-ink-muted hover:text-ink" target="_blank" rel="noopener noreferrer">
+            <a href="https://linkedin.com/company/leftrightmedia" className="text-body-sm text-ink-muted hover:text-ink" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
-            <a href="https://instagram.com" className="text-body-sm text-ink-muted hover:text-ink" target="_blank" rel="noopener noreferrer">
+            <a href="https://instagram.com/leftrightmedia" className="text-body-sm text-ink-muted hover:text-ink" target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
           </div>

@@ -3,15 +3,9 @@ import { jest } from '@jest/globals';
 import app from '../server.js';
 import { Lead } from '../models/Lead.js';
 
-// Mock the Mongoose model to bypass actual database connections
-jest.mock('../models/Lead.js', () => {
-  return {
-    Lead: {
-      create: jest.fn(),
-      deleteMany: jest.fn(),
-    }
-  };
-});
+// Spy on Lead methods for ESM compatibility
+Lead.create = jest.fn();
+Lead.deleteMany = jest.fn();
 
 describe('Lead API', () => {
   beforeEach(() => {

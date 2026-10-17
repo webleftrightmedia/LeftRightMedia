@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, SectionLabel } from '../ui';
+import { Container, SectionLabel, Button } from '../ui';
 import { audiences, locationOptions, timeOptions } from '../../data/homepage';
+import { trackEvent } from '../../utils/analytics';
 
 /**
  * Section 05 — Advertiser Problem / Audience Selector
@@ -20,15 +21,18 @@ export default function AudienceSelectorSection() {
   const handleSelect = (key, value) => {
     const updated = { ...selections, [key]: value };
     setSelections(updated);
+    trackEvent('audience_selector_select', { step: key, value });
 
     if (currentStep < steps.length - 1) {
       setTimeout(() => setCurrentStep((s) => s + 1), 400);
     } else {
+      trackEvent('audience_selector_complete', updated);
       setTimeout(() => setComplete(true), 400);
     }
   };
 
   const handleReset = () => {
+    trackEvent('audience_selector_reset');
     setCurrentStep(0);
     setSelections({ audience: null, location: null, time: null });
     setComplete(false);
@@ -108,15 +112,26 @@ export default function AudienceSelectorSection() {
                 <span className="text-ink-muted self-center">×</span>
                 <span className="px-4 py-2 bg-ink text-white rounded-md text-label-md">{selections.time}</span>
               </div>
-              <p className="text-headline-sm text-ink">
+              <p className="text-headline-sm text-ink max-w-md mx-auto">
                 Build your campaign around places, audiences and moments.
               </p>
-              <button
-                onClick={handleReset}
-                className="mt-6 text-body-md text-ink-muted hover:text-ink underline underline-offset-4 cursor-pointer"
-              >
-                Try again
-              </button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                <Button
+                  variant="signal"
+                  size="md"
+                  href="/advertise"
+                  onClick={() => trackEvent('cta_click', { placement: 'audience_selector_complete', ...selections })}
+                >
+                  Start Campaign with this Targeting →
+                </Button>
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="text-body-md text-ink-muted hover:text-ink underline underline-offset-4 cursor-pointer"
+                >
+                  Reset filters
+                </button>
+              </div>
             </div>
           )}
         </div>

@@ -5,7 +5,8 @@ const leadSchema = new mongoose.Schema(
     type: {
       type: String,
       required: true,
-      enum: ['host', 'advertiser'],
+      enum: ['host', 'advertiser', 'screen', 'event', 'partnership', 'other'],
+      default: 'advertiser',
     },
     name: {
       type: String,
@@ -14,17 +15,18 @@ const leadSchema = new mongoose.Schema(
     },
     businessName: {
       type: String,
-      required: true,
       trim: true,
+      default: '',
     },
     city: {
       type: String,
-      required: true,
       trim: true,
+      default: '',
     },
     phone: {
       type: String,
-      required: true,
+      trim: true,
+      default: '',
     },
     email: {
       type: String,
@@ -34,16 +36,19 @@ const leadSchema = new mongoose.Schema(
     },
     screenCount: {
       type: Number,
-      required: function () {
-        return this.type === 'host';
-      },
       min: 1,
     },
     budgetRange: {
       type: String,
-      required: function () {
-        return this.type === 'advertiser';
-      },
+      trim: true,
+    },
+    message: {
+      type: String,
+      trim: true,
+    },
+    details: {
+      type: mongoose.Schema.Types.Mixed,
+      default: {},
     },
     status: {
       type: String,

@@ -27,7 +27,52 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Security Middleware
 app.use(helmet());
-app.use(cors());
+
+// CORS — restrict to official domain in production, allow local in development
+const defaultOrigins = [
+  'https://leftrightmedia.in',
+  'https://www.leftrightmedia.in',
+];
+
+const envOrigins = (process.env.CLIENT_ORIGIN || '')
+  .split(',')
+  .map(o => o.trim())
+  .filter(Boolean);
+
+const devOrigins = [
+  'http://localhost:5173',
+  'http://localhost:4173',
+  'http://localhost:3000',
+  'http://127.0.0.1:5173',
+];
+
+const allowedOrigins = [
+  ...new Set([
+    ...defaultOrigins,
+    ...envOrigins,
+    ...(process.env.NODE_ENV !== 'production' ? devOrigins : []),
+  ]),
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow server-to-server requests (like curl, postman, server healthchecks)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // In dev mode, allow any localhost
+    if (process.env.NODE_ENV !== 'production' && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+      return callback(null, true);
+    }
+
+    callback(new Error(`CORS blocked for origin: ${origin}`));
+  },
+  methods: ['GET', 'POST', 'PATCH'],
+  credentials: true,
+}));
 
 // Apply rate limiter to all requests
 app.use('/api', apiLimiter);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CloudUpload, Layers, Activity, ArrowRight } from 'lucide-react';
-import { Container, Button, SectionLabel, Logo } from '../../ui';
+import { Container, Button, SectionLabel } from '../../ui';
 import CampaignCard from './CampaignCard';
 import PlatformDashboard from './PlatformDashboard';
 import NetworkMap from './NetworkMap';

@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import axios from 'axios';
-
-const ADMIN_KEY = 'dev-admin-key'; // matches server/.env ADMIN_KEY
 
 const STATUS_COLORS = {
   new:       { bg: '#EFF6FF', text: '#2563EB', label: 'New' },
@@ -11,8 +9,11 @@ const STATUS_COLORS = {
 };
 
 const TYPE_COLORS = {
-  advertiser: { bg: '#F5F3FF', text: '#7C3AED' },
-  host:       { bg: '#ECFDF5', text: '#059669' },
+  advertiser:  { bg: '#F5F3FF', text: '#7C3AED' },
+  host:        { bg: '#ECFDF5', text: '#059669' },
+  event:       { bg: '#FEF3C7', text: '#D97706' },
+  partnership: { bg: '#E0F2FE', text: '#0284C7' },
+  other:       { bg: '#F3F4F6', text: '#4B5563' },
 };
 
 function StatCard({ label, value, sub, color = '#111315' }) {
@@ -235,8 +236,8 @@ export default function AdminPanel() {
               placeholder="Search name, business, email, city..."
               style={{ flex: 1, minWidth: 200, padding: '8px 12px', fontSize: 13, border: '1px solid #E2E5E9', borderRadius: 8, outline: 'none' }}
             />
-            <div style={{ display: 'flex', gap: 6 }}>
-              {['all', 'advertiser', 'host'].map(f => (
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+              {['all', 'advertiser', 'host', 'event', 'partnership', 'other'].map(f => (
                 <button key={f} onClick={() => setFilter(f)} style={{
                   padding: '6px 14px', fontSize: 12, fontWeight: 600, borderRadius: 6, cursor: 'pointer',
                   border: '1px solid', borderColor: filter === f ? '#111315' : '#E2E5E9',

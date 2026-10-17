@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Container, Button, Logo } from './ui';
+import { Container, Button } from './ui';
 import { Menu, X } from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
 

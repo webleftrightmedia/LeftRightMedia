@@ -22,7 +22,7 @@ const trustBadges = [
 
 export default function TrustSignals() {
   return (
-    <section className="py-20 lg:py-24 bg-ink text-white">
+    <section className="py-20 lg:py-28 bg-ink text-white border-b border-white/10" aria-label="Trust and credentials">
       <Container>
         <div className="text-center mb-4">
           <SectionLabel className="justify-center !text-white/40">From the Ground</SectionLabel>
@@ -48,11 +48,11 @@ export default function TrustSignals() {
         <div className="h-px bg-white/10 my-12" />
 
         {/* Trust badges */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {trustBadges.map((badge) => {
             const Icon = badge.icon;
             return (
-              <div key={badge.title} className="text-center">
+              <div key={badge.title} className="text-center p-6 border border-white/10 rounded-md bg-white/[0.02]">
                 <div className="w-12 h-12 bg-white/10 rounded-[4px] flex items-center justify-center mx-auto mb-4">
                   <Icon size={24} className="text-accent" />
                 </div>
