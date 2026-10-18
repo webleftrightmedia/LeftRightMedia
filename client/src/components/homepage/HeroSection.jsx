@@ -30,6 +30,8 @@ const MobilePanel = ({ title, src }) => (
       <img
         src={src}
         alt={title}
+        width="480"
+        height="360"
         loading="lazy"
         decoding="async"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -109,6 +111,8 @@ export default function HeroSection() {
                 <img
                   src={cityBase}
                   alt="City Canvas"
+                  width="800"
+                  height="600"
                   fetchpriority="high"
                   decoding="async"
                   className="w-full h-full object-cover grayscale-[15%] opacity-70"
@@ -146,6 +150,8 @@ export default function HeroSection() {
                 <img
                   src={cityBase}
                   alt="City Canvas"
+                  width="800"
+                  height="600"
                   fetchpriority="high"
                   decoding="async"
                   className="w-full h-full object-cover grayscale-[15%] opacity-80"
