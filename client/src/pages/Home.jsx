@@ -1,26 +1,9 @@
-import React from 'react';
-import {
-  HeroSection,
-  PlatformSection,
-  ImpactSection,
-  AudienceSelectorSection,
-  CampaignBuilderSection,
-  ScreenPartnersSection,
-  EventsIntroSection,
-  EventCapabilitiesSection,
-  EventScreenSection,
-  PhysicalDigitalSection,
-  ContentTypesSection,
-  WhyLrmSection,
-  DayTimelineSection,
-  ProofSection,
-  PathSelectionSection,
-  FinalCtaSection,
-} from '../components/homepage';
-import TrustSignals from '../components/TrustSignals';
-import FAQ from '../components/FAQ';
+import React, { lazy, Suspense } from 'react';
+import HeroSection from '../components/homepage/HeroSection';
 import SEO from '../components/SEO';
 import faqs from '../data/faqs';
+
+const BelowTheFold = lazy(() => import('../components/homepage/BelowTheFold'));
 
 const homeSchema = {
   '@context': 'https://schema.org',
@@ -68,24 +51,13 @@ export default function Home() {
         description="Reach captive audiences across premium cafes, retail hubs, and commercial spaces through connected digital TV screens in Nadiad, Surat, and across Gujarat."
         schema={homeSchema}
       />
-      {/* 01 Hero */} <HeroSection />
-      {/* 02 Platform Architecture */} <PlatformSection />
-      {/* 04 Network Impact */} <ImpactSection />
-      {/* 05 Audience Selector */} <AudienceSelectorSection />
-      {/* 06 Interactive Campaign Builder */} <CampaignBuilderSection />
-      {/* 07 Screen Partners Value Flow */} <ScreenPartnersSection />
-      {/* 08 Events Introduction */} <EventsIntroSection />
-      {/* 09 Event Capabilities */} <EventCapabilitiesSection />
-      {/* 10 Event Screen Preview */} <EventScreenSection />
-      {/* 11 Physical-Digital Integration */} <PhysicalDigitalSection />
-      {/* 12 Dynamic Content Types */} <ContentTypesSection />
-      {/* 13 Strategic Pillars */} <WhyLrmSection />
-      {/* 14 Day in the Life Timeline */} <DayTimelineSection />
-      {/* 15 Network Expansion Status */} <ProofSection />
-      {/* 16 Ground-level Trust & Proof */} <TrustSignals />
-      {/* 17 Audience Path Routing */} <PathSelectionSection />
-      {/* 18 Frequently Asked Questions */} <FAQ />
-      {/* 19 Final Monolithic Call to Action */} <FinalCtaSection />
+      {/* 01 Hero Section (Immediate Above-The-Fold Paint) */}
+      <HeroSection />
+
+      {/* 02-19 Below-The-Fold Sections (Deferred for Instant First Paint & Minimal Unused JS) */}
+      <Suspense fallback={null}>
+        <BelowTheFold />
+      </Suspense>
     </>
   );
 }
