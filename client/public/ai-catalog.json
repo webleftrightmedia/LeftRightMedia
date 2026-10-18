@@ -1,0 +1,27 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "LeftRightMedia",
+    "identifier": "https://leftrightmedia.in"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:leftrightmedia.in:service:dooh-advertising",
+      "displayName": "LeftRightMedia DOOH Advertising Network",
+      "type": "application/json",
+      "url": "https://leftrightmedia.in/advertise"
+    },
+    {
+      "identifier": "urn:air:leftrightmedia.in:service:screen-partners",
+      "displayName": "LeftRightMedia Screen Host Partner Network",
+      "type": "application/json",
+      "url": "https://leftrightmedia.in/screen-partners"
+    },
+    {
+      "identifier": "urn:air:leftrightmedia.in:service:event-screens",
+      "displayName": "LeftRightMedia Event Digital Signage",
+      "type": "application/json",
+      "url": "https://leftrightmedia.in/events"
+    }
+  ]
+}

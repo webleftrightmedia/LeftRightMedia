@@ -1,0 +1,21 @@
+# LeftRightMedia
+
+> LeftRightMedia connects brands with captive audiences through programmatic and location-targeted digital advertising screen networks in cafes, retail stores, gyms, commercial hubs, and event domes across Gujarat and India.
+
+LeftRightMedia operates a physical-world digital advertising network that turns idle commercial TVs into high-yield, connected ad inventory while respecting consumer privacy (no intrusive facial recognition).
+
+## Main Pages
+
+- [Home](https://leftrightmedia.in/): Overview of LeftRightMedia connected digital screen advertising network in Gujarat.
+- [Advertise](https://leftrightmedia.in/advertise): Campaign builder, audience targeting, and local to city-wide screen advertising packages.
+- [Screen Partners](https://leftrightmedia.in/screen-partners): Information and application for venue hosts to monetize their TV screens with a 55/45 revenue split.
+- [Events](https://leftrightmedia.in/events): Event digital screen signage, wayfinding, and live sponsor loops for exhibitions and trade expos.
+- [About](https://leftrightmedia.in/about): Background on LeftRightMedia, founding mission, operational hubs in Surat and Nadiad, and company roadmap.
+- [Contact](https://leftrightmedia.in/contact): Direct contact points and multi-purpose inquiry form for advertisers, venue hosts, and event organizers.
+- [Privacy Policy](https://leftrightmedia.in/privacy): Privacy standards rejecting facial recognition cameras and invasive user tracking.
+- [Terms of Service](https://leftrightmedia.in/terms): Terms and conditions governing campaigns and screen hosting agreements.
+
+## Network & Technology
+
+- [Architecture](https://leftrightmedia.in/about): Web-native player architecture running on standard Smart TVs without proprietary boxes.
+- [Sitemap](https://leftrightmedia.in/sitemap.xml): Full XML sitemap for search and AI discovery.

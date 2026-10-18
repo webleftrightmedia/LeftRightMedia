@@ -3,3 +3,5 @@ Allow: /
 Disallow: /admin
 
 Sitemap: https://leftrightmedia.in/sitemap.xml
+Agentmap: https://leftrightmedia.in/.well-known/ai-catalog.json
+
