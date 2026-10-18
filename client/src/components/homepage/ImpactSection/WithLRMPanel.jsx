@@ -1,8 +1,8 @@
 import React from 'react';
 import { Check, Layers, Map, Users, Clock, TrendingUp } from 'lucide-react';
 import { Logo } from '../../ui';
-import connectedCityNetwork from '../../../assets/connected-city-network.png';
-import velocityAd from '../../../assets/velocity-ad.png';
+import connectedCityNetwork from '../../../assets/connected-city-network.webp';
+import velocityAd from '../../../assets/velocity-ad.webp';
 
 const networkNodes = [
   { top: "15%", left: "70%", delay: 600, width: "60px", className: "hidden sm:flex" },
@@ -26,7 +26,7 @@ export default function WithLRMPanel({ inView }) {
       
       {/* Background Map */}
       <div className={`absolute inset-0 w-full h-full z-0 pointer-events-none transition-all duration-1000 ease-out ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
-        <img src={connectedCityNetwork} alt="Connected City" className="w-full h-full object-cover object-center" />
+        <img src={connectedCityNetwork} alt="Connected City" loading="lazy" decoding="async" className="w-full h-full object-cover object-center" />
         {/* Very subtle gradient to ensure text readability top-left */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/10 to-transparent z-10"></div>
       </div>

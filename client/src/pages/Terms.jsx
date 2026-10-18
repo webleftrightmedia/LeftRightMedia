@@ -1,11 +1,16 @@
 import React from 'react';
 import { Container, SectionLabel, Button } from '../components/ui';
+import SEO from '../components/SEO';
 
 export default function Terms() {
   const lastUpdated = 'October 17, 2026';
 
   return (
     <article className="py-20 lg:py-28 bg-concrete">
+      <SEO
+        title="Terms of Service"
+        description="LeftRightMedia Terms of Service governing advertising campaigns, screen partner agreements, and media distribution."
+      />
       <Container>
         {/* Header */}
         <header className="max-w-3xl border-b border-slate-border pb-10">

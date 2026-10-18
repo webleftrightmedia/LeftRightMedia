@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Button, SectionLabel } from '../components/ui';
 import { Shield, Tv, Zap, MapPin, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const coreStats = [
   { value: '2', label: 'PILOT CITIES', detail: 'Nadiad & Surat (Gujarat)' },
@@ -62,6 +63,10 @@ const timelineSteps = [
 export default function About() {
   return (
     <article className="bg-concrete">
+      <SEO
+        title="About LeftRightMedia — Physical-World Advertising Network"
+        description="Learn how LeftRightMedia is democratizing connected digital out-of-home (DOOH) advertising across Gujarat and India, turning idle screens into active inventory."
+      />
       {/* 01 Hero Section */}
       <section className="bg-concrete-white border-b border-slate-border py-20 lg:py-28">
         <Container>

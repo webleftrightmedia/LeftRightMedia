@@ -1,6 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
-import frustratedBuyer from '../../../assets/frustrated-buyer.png';
+import frustratedBuyer from '../../../assets/frustrated-buyer.webp';
 
 const thoughtBubbles = [
   // Left side
@@ -20,7 +20,7 @@ export default function WithoutNetworkPanel({ inView }) {
       
       {/* Central Advertiser Background */}
       <div className={`absolute inset-0 w-full h-full z-0 pointer-events-none transition-opacity duration-1000 ease-out ${inView ? 'opacity-100' : 'opacity-0'}`}>
-        <img src={frustratedBuyer} alt="Frustrated media buyer manually planning" className="w-full h-full object-cover object-center" />
+        <img src={frustratedBuyer} alt="Frustrated media buyer manually planning" loading="lazy" decoding="async" className="w-full h-full object-cover object-center" />
         {/* Gradients to fade edges without hiding the person */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/60 z-10"></div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin } from 'lucide-react';
-import cityBase from '../../../assets/city-base.png';
+import cityBase from '../../../assets/city-base.webp';
 import { locations } from './SharedData';
 
 const NetworkMap = ({ showLines }) => (
@@ -10,7 +10,7 @@ const NetworkMap = ({ showLines }) => (
       <div className="absolute inset-y-0 left-0 bg-concrete-white z-10 w-[40%]"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-concrete-white via-concrete-white/90 to-transparent z-10 w-[60%]"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-concrete-white via-transparent to-concrete-white z-10 h-full"></div>
-      <img src={cityBase} alt="City Network Map" className="w-full h-full object-cover opacity-80" />
+      <img src={cityBase} alt="City Network Map" loading="lazy" decoding="async" className="w-full h-full object-cover opacity-80" />
     </div>
 
     {/* Scattered Map Pins */}

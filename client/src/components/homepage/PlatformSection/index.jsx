@@ -8,12 +8,12 @@ import LocationScreen from './LocationScreen';
 import MobileLocationRow from './MobileLocationRow';
 import { locations } from './SharedData';
 
-import heroCafe from '../../../assets/hero-cafe.png';
-import panelRetail from '../../../assets/panel-retail.png';
-import panelCommercial from '../../../assets/panel-commercial.png';
-import panelEvent from '../../../assets/panel-event.png';
-import panelTaxi from '../../../assets/panel-taxi.png';
-import panelPublicSpace from '../../../assets/panel-public-space.png';
+import heroCafe from '../../../assets/hero-cafe.webp';
+import panelRetail from '../../../assets/panel-retail.webp';
+import panelCommercial from '../../../assets/panel-commercial.webp';
+import panelEvent from '../../../assets/panel-event.webp';
+import panelTaxi from '../../../assets/panel-taxi.webp';
+import panelPublicSpace from '../../../assets/panel-public-space.webp';
 
 const imageMap = {
   cafe: heroCafe,

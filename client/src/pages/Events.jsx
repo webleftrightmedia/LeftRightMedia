@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, SectionLabel } from '../components/ui';
 import { trackEvent } from '../utils/analytics';
+import SEO from '../components/SEO';
 
 /**
  * /events — LRM Events page.
@@ -42,6 +43,10 @@ export default function Events() {
 
   return (
     <>
+      <SEO
+        title="Digital Signage & Screen Networks for Events & Expos"
+        description="Deploy dynamic digital screen signage, wayfinding, and live sponsor loops across exhibitions, trade expos, and college festivals in Gujarat."
+      />
       {/* Hero */}
       <section className="bg-ink text-white border-b border-slate-divider py-20 lg:py-28">
         <Container>

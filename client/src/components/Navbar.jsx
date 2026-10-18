@@ -18,9 +18,10 @@ export default function Navbar() {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState(location.pathname === '/' ? 'logo' : location.pathname);
 
-  const [dotStyle, setDotStyle] = useState({ left: 0, width: 5, opacity: 0 });
+  const [dotTransform, setDotTransform] = useState({ x: 0, scaleX: 1, opacity: 0, animate: false });
   const navRefs = useRef({});
   const prevLeft = useRef(null);
+  const rafId = useRef(null);
   const animTimer = useRef(null);
 
   // Update active section on route change + close mobile menu
@@ -38,38 +39,55 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Two-phase fluid animation: stretch → compress
+  // GPU-accelerated two-phase fluid animation: stretch → compress without forced reflow
   useEffect(() => {
-    const activeEl = navRefs.current[activeSection];
-    if (!activeEl) return;
-
-    const DOT = 5;
-    const center = activeEl.offsetLeft + (activeEl.offsetWidth / 2);
-    const newLeft = center - (DOT / 2);
-
+    if (rafId.current) cancelAnimationFrame(rafId.current);
     if (animTimer.current) clearTimeout(animTimer.current);
 
-    // First render — just place it, no animation
-    if (prevLeft.current === null) {
+    // Defer geometric query to animation frame to prevent forced synchronous layout during initial commit
+    rafId.current = requestAnimationFrame(() => {
+      const activeEl = navRefs.current[activeSection];
+      if (!activeEl) return;
+
+      const DOT = 5;
+      const center = activeEl.offsetLeft + (activeEl.offsetWidth / 2);
+      const newLeft = center - (DOT / 2);
+
+      // First render — just place it smoothly without triggering layout thrashing
+      if (prevLeft.current === null) {
+        prevLeft.current = newLeft;
+        setDotTransform({ x: newLeft, scaleX: 1, opacity: 1, animate: false });
+        return;
+      }
+
+      const oldLeft = prevLeft.current;
       prevLeft.current = newLeft;
-      setDotStyle({ left: newLeft, width: DOT, opacity: 1 });
-      return;
-    }
 
-    const oldLeft = prevLeft.current;
-    prevLeft.current = newLeft;
+      // Phase 1: Stretch from old position to new position via scaleX + translateX
+      const stretchLeft = Math.min(oldLeft, newLeft);
+      const stretchWidth = Math.abs(newLeft - oldLeft) + DOT;
+      setDotTransform({
+        x: stretchLeft,
+        scaleX: stretchWidth / DOT,
+        opacity: 1,
+        animate: true,
+      });
 
-    // Phase 1: Stretch from old position to new position
-    const stretchLeft = Math.min(oldLeft, newLeft);
-    const stretchWidth = Math.abs(newLeft - oldLeft) + DOT;
-    setDotStyle({ left: stretchLeft, width: stretchWidth, opacity: 1 });
+      // Phase 2: After stretch completes, compress to dot at new position
+      animTimer.current = setTimeout(() => {
+        setDotTransform({
+          x: newLeft,
+          scaleX: 1,
+          opacity: 1,
+          animate: true,
+        });
+      }, 280);
+    });
 
-    // Phase 2: After stretch completes, compress to dot at new position
-    animTimer.current = setTimeout(() => {
-      setDotStyle({ left: newLeft, width: DOT, opacity: 1 });
-    }, 280);
-
-    return () => { if (animTimer.current) clearTimeout(animTimer.current); };
+    return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+      if (animTimer.current) clearTimeout(animTimer.current);
+    };
   }, [activeSection]);
 
   // Lock body scroll when mobile menu open
@@ -90,12 +108,15 @@ export default function Navbar() {
           
           {/* Desktop nav container for alignment */}
           <div className="flex items-center gap-8 relative h-full">
-            {/* Fluid Elastic Dot Indicator */}
+            {/* Fluid Elastic Dot Indicator - Composable GPU Transform without reflow */}
             <div 
-              className="hidden lg:block absolute bottom-3 h-[5px] bg-ink rounded-full"
+              className="hidden lg:block absolute bottom-3 h-[5px] w-[5px] bg-ink rounded-full origin-left will-change-transform"
               style={{
-                ...dotStyle,
-                transition: 'left 0.28s cubic-bezier(0.4, 0, 0.2, 1), width 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+                opacity: dotTransform.opacity,
+                transform: `translate3d(${dotTransform.x}px, 0, 0) scaleX(${dotTransform.scaleX})`,
+                transition: dotTransform.animate
+                  ? 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease'
+                  : 'none',
               }}
             />
 

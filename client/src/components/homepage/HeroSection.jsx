@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, SectionLabel } from '../ui';
-import heroCafe from '../../assets/hero-cafe.png';
-import panelRetail from '../../assets/panel-retail.png';
-import panelCommercial from '../../assets/panel-commercial.png';
-import panelEvent from '../../assets/panel-event.png';
-import panelTaxi from '../../assets/panel-taxi.png';
-import panelPublicSpace from '../../assets/panel-public-space.png';
-import cityBase from '../../assets/city-base.png';
+import heroCafe from '../../assets/hero-cafe.webp';
+import panelRetail from '../../assets/panel-retail.webp';
+import panelCommercial from '../../assets/panel-commercial.webp';
+import panelEvent from '../../assets/panel-event.webp';
+import panelTaxi from '../../assets/panel-taxi.webp';
+import panelPublicSpace from '../../assets/panel-public-space.webp';
+import cityBase from '../../assets/city-base.webp';
 
 const TICKER_WORDS = [
   "accessible.",
@@ -27,7 +27,13 @@ const stats = [
 const MobilePanel = ({ title, src }) => (
   <div className="bg-white rounded-xl shadow-md border border-slate-border overflow-hidden flex flex-col relative group">
     <div className="h-28 overflow-hidden relative">
-      <img src={src} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+      <img
+        src={src}
+        alt={title}
+        loading="lazy"
+        decoding="async"
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
     </div>
     <div className="absolute bottom-2.5 left-3 flex items-center gap-2">
@@ -102,7 +108,13 @@ export default function HeroSection() {
             <div className="block lg:hidden relative rounded-2xl overflow-hidden mt-6 border border-slate-border shadow-sm">
               <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-concrete-white/60 backdrop-blur-[2px] z-10"></div>
-                <img src={cityBase} alt="City Canvas" className="w-full h-full object-cover grayscale-[15%] opacity-70" />
+                <img
+                  src={cityBase}
+                  alt="City Canvas"
+                  fetchpriority="high"
+                  decoding="async"
+                  className="w-full h-full object-cover grayscale-[15%] opacity-70"
+                />
               </div>
               
               <div className="relative z-20 py-8 px-4">
@@ -133,7 +145,13 @@ export default function HeroSection() {
               <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden shadow-inner">
                 <div className="absolute inset-0 bg-gradient-to-r from-concrete-white via-transparent to-transparent z-10 w-1/3"></div>
                 <div className="absolute inset-0 bg-concrete-white/30 z-10 backdrop-blur-[1px]"></div>
-                <img src={cityBase} alt="City Canvas" className="w-full h-full object-cover grayscale-[15%] opacity-80" />
+                <img
+                  src={cityBase}
+                  alt="City Canvas"
+                  fetchpriority="high"
+                  decoding="async"
+                  className="w-full h-full object-cover grayscale-[15%] opacity-80"
+                />
               </div>
 
               {/* Connections SVG */}

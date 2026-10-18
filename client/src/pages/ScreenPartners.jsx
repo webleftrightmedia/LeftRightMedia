@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Button, SectionLabel } from '../components/ui';
 import { trackEvent } from '../utils/analytics';
+import SEO from '../components/SEO';
 
 /**
  * /screen-partners — Screen Partner journey page.
@@ -26,6 +27,10 @@ const lrmResponsibilities = [
 export default function ScreenPartners() {
   return (
     <>
+      <SEO
+        title="Monetize Your Smart TV Screen | Partner Program"
+        description="Turn your café, gym, or commercial TV into passive monthly revenue with LeftRightMedia. 55% host menu time, 45% ad split. Zero extra hardware needed."
+      />
       {/* Hero */}
       <section className="bg-concrete-white border-b border-slate-border py-20 lg:py-28">
         <Container>

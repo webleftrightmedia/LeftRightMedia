@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, SectionLabel } from './ui';
-import heroCafe from '../assets/hero-cafe.png';
+import heroCafe from '../assets/hero-cafe.webp';
 
 const stats = [
   { value: '42+', label: 'Screens Live' },

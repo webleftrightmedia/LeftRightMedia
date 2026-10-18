@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Button, SectionLabel } from '../components/ui';
 import { trackEvent } from '../utils/analytics';
+import SEO from '../components/SEO';
 
 /**
  * /advertise — Advertiser journey page.
@@ -54,6 +55,10 @@ export default function Advertise() {
 
   return (
     <>
+      <SEO
+        title="Digital Screen Advertising for Brands & Local Businesses"
+        description="Launch targeted DOOH digital screen campaigns across Gujarat. Put your brand in high-footfall cafes, gyms, and commercial spaces with zero long-term lock-in."
+      />
       {/* Hero */}
       <section className="bg-concrete-white border-b border-slate-border py-20 lg:py-28">
         <Container>

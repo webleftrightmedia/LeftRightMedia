@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Button, SectionLabel } from '../components/ui';
 import { trackEvent } from '../utils/analytics';
+import SEO from '../components/SEO';
 
 /**
  * /contact — Dynamic contact page.
@@ -82,6 +83,10 @@ export default function Contact() {
 
   return (
     <>
+      <SEO
+        title="Contact LeftRightMedia — Start Advertising or List a Screen"
+        description="Get in touch with LeftRightMedia. Launch a hyper-local screen advertising campaign, apply as a screen host, or deploy digital signage for your event."
+      />
       {/* Hero */}
       <section className="bg-concrete-white border-b border-slate-border py-20 lg:py-28">
         <Container>
