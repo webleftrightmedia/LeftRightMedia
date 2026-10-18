@@ -41,11 +41,46 @@ export default function Events() {
 
   const mode = screenModes[modeIndex];
 
+  const eventsSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        'name': 'Event Digital Screen Signage Network',
+        'provider': {
+          '@type': 'LocalBusiness',
+          'name': 'LeftRightMedia',
+          'url': 'https://leftrightmedia.in'
+        },
+        'serviceType': 'Event Signage, Wayfinding & Live Sponsor Loops',
+        'description': 'Dynamic digital screens and interactive networks for expos, exhibitions, and university events in Gujarat.'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://leftrightmedia.in/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Events',
+            'item': 'https://leftrightmedia.in/events'
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
       <SEO
         title="Digital Signage & Screen Networks for Events & Expos"
         description="Deploy dynamic digital screen signage, wayfinding, and live sponsor loops across exhibitions, trade expos, and college festivals in Gujarat."
+        schema={eventsSchema}
       />
       {/* Hero */}
       <section className="bg-ink text-white border-b border-slate-divider py-20 lg:py-28">

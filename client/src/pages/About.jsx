@@ -61,11 +61,41 @@ const timelineSteps = [
 ];
 
 export default function About() {
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'AboutPage',
+        'name': 'About LeftRightMedia',
+        'url': 'https://leftrightmedia.in/about',
+        'description': 'LeftRightMedia is democratizing connected out-of-home screen advertising across Gujarat and Tier-2 India.'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://leftrightmedia.in/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'About',
+            'item': 'https://leftrightmedia.in/about'
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <article className="bg-concrete">
       <SEO
         title="About LeftRightMedia — Physical-World Advertising Network"
         description="Learn how LeftRightMedia is democratizing connected digital out-of-home (DOOH) advertising across Gujarat and India, turning idle screens into active inventory."
+        schema={aboutSchema}
       />
       {/* 01 Hero Section */}
       <section className="bg-concrete-white border-b border-slate-border py-20 lg:py-28">

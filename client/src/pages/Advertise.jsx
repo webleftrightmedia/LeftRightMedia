@@ -53,11 +53,52 @@ export default function Advertise() {
 
   const screenCount = locations.length * 4;
 
+  const advertiseSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        'name': 'DOOH Digital Screen Advertising',
+        'provider': {
+          '@type': 'LocalBusiness',
+          'name': 'LeftRightMedia',
+          'url': 'https://leftrightmedia.in'
+        },
+        'serviceType': 'Digital Out of Home Advertising',
+        'areaServed': [
+          { '@type': 'City', 'name': 'Surat' },
+          { '@type': 'City', 'name': 'Nadiad' },
+          { '@type': 'State', 'name': 'Gujarat' },
+          { '@type': 'Country', 'name': 'India' }
+        ],
+        'description': 'Targeted DOOH advertising campaigns across connected digital screens in cafes, gyms, and commercial hubs in Gujarat.'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://leftrightmedia.in/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Advertise',
+            'item': 'https://leftrightmedia.in/advertise'
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
       <SEO
         title="Digital Screen Advertising for Brands & Local Businesses"
         description="Launch targeted DOOH digital screen campaigns across Gujarat. Put your brand in high-footfall cafes, gyms, and commercial spaces with zero long-term lock-in."
+        schema={advertiseSchema}
       />
       {/* Hero */}
       <section className="bg-concrete-white border-b border-slate-border py-20 lg:py-28">

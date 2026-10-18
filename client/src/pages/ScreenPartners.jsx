@@ -25,11 +25,46 @@ const lrmResponsibilities = [
 ];
 
 export default function ScreenPartners() {
+  const partnerSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        'name': 'Screen Partner Host Program',
+        'provider': {
+          '@type': 'LocalBusiness',
+          'name': 'LeftRightMedia',
+          'url': 'https://leftrightmedia.in'
+        },
+        'serviceType': 'Digital Signage Screen Monetization',
+        'description': 'Monetize commercial venue TVs with LeftRightMedia. 55% host branding time and 45% paid advertising revenue split.'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://leftrightmedia.in/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Screen Partners',
+            'item': 'https://leftrightmedia.in/screen-partners'
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
       <SEO
         title="Monetize Your Smart TV Screen | Partner Program"
         description="Turn your café, gym, or commercial TV into passive monthly revenue with LeftRightMedia. 55% host menu time, 45% ad split. Zero extra hardware needed."
+        schema={partnerSchema}
       />
       {/* Hero */}
       <section className="bg-concrete-white border-b border-slate-border py-20 lg:py-28">

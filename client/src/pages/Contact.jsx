@@ -81,11 +81,41 @@ export default function Contact() {
   const [purpose, setPurpose] = useState(null);
   const [submitError, setSubmitError] = useState(null);
 
+  const contactSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ContactPage',
+        'name': 'Contact LeftRightMedia',
+        'url': 'https://leftrightmedia.in/contact',
+        'description': 'Contact LeftRightMedia to launch screen campaigns, monetize idle TVs, or deploy event screen networks across Gujarat.'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://leftrightmedia.in/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Contact',
+            'item': 'https://leftrightmedia.in/contact'
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
       <SEO
         title="Contact LeftRightMedia — Start Advertising or List a Screen"
         description="Get in touch with LeftRightMedia. Launch a hyper-local screen advertising campaign, apply as a screen host, or deploy digital signage for your event."
+        schema={contactSchema}
       />
       {/* Hero */}
       <section className="bg-concrete-white border-b border-slate-border py-20 lg:py-28">
