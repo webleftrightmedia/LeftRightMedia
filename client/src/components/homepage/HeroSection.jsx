@@ -45,10 +45,8 @@ const MobilePanel = ({ title, src }) => (
 
 export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
     const timer = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % TICKER_WORDS.length);
     }, 2000);
@@ -61,7 +59,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left — copy */}
-          <div className={`space-y-6 lg:col-span-5 z-10 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="space-y-6 lg:col-span-5 z-10 opacity-100">
             <SectionLabel>Left Right Media</SectionLabel>
 
             <h1 className="text-display-mobile lg:text-display leading-tight">
@@ -102,7 +100,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right — CITY CANVAS */}
-          <div className={`relative w-full lg:col-span-7 mt-6 lg:mt-0 flex flex-col gap-8 lg:block transition-all duration-1000 translate-x-0 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+          <div className="relative w-full lg:col-span-7 mt-6 lg:mt-0 flex flex-col gap-8 lg:block opacity-100 translate-x-0">
             
             {/* Mobile Re-composition */}
             <div className="block lg:hidden relative rounded-2xl overflow-hidden mt-6 border border-slate-border shadow-sm">
@@ -191,7 +189,7 @@ export default function HeroSection() {
 
               <div className="absolute top-[8%] left-[2%] xl:left-[5%] z-30 w-40 xl:w-44 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-40 shadow-lg">
                 <div className="bg-white rounded-lg border border-slate-border overflow-hidden">
-                  <img src={heroCafe} alt="Café" className="w-full h-20 xl:h-24 object-cover" />
+                  <img src={heroCafe} alt="Café" loading="lazy" decoding="async" className="w-full h-20 xl:h-24 object-cover" />
                   <div className="py-2 px-3 flex items-center gap-2 bg-white border-t border-slate-border">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#34C759] shadow-[0_0_4px_rgba(52,199,89,0.6)] animate-pulse"></div>
                     <span className="text-[10px] xl:text-xs font-bold text-ink uppercase tracking-wider">Café</span>
@@ -201,7 +199,7 @@ export default function HeroSection() {
 
               <div className="absolute top-[12%] right-[2%] xl:right-[5%] z-30 w-40 xl:w-44 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-40 shadow-lg">
                 <div className="bg-white rounded-lg border border-slate-border overflow-hidden">
-                  <img src={panelEvent} alt="Event" className="w-full h-20 xl:h-24 object-cover" />
+                  <img src={panelEvent} alt="Event" loading="lazy" decoding="async" className="w-full h-20 xl:h-24 object-cover" />
                   <div className="py-2 px-3 flex items-center gap-2 bg-white border-t border-slate-border">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#34C759] shadow-[0_0_4px_rgba(52,199,89,0.6)] animate-pulse"></div>
                     <span className="text-[10px] xl:text-xs font-bold text-ink uppercase tracking-wider">Event</span>
@@ -211,7 +209,7 @@ export default function HeroSection() {
 
               <div className="absolute top-[42%] left-[4%] xl:left-[6%] z-30 w-40 xl:w-44 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-40 shadow-lg">
                 <div className="bg-white rounded-lg border border-slate-border overflow-hidden">
-                  <img src={panelRetail} alt="Retail" className="w-full h-20 xl:h-24 object-cover" />
+                  <img src={panelRetail} alt="Retail" loading="lazy" decoding="async" className="w-full h-20 xl:h-24 object-cover" />
                   <div className="py-2 px-3 flex items-center gap-2 bg-white border-t border-slate-border">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#34C759] shadow-[0_0_4px_rgba(52,199,89,0.6)] animate-pulse"></div>
                     <span className="text-[10px] xl:text-xs font-bold text-ink uppercase tracking-wider">Retail</span>
@@ -221,7 +219,7 @@ export default function HeroSection() {
 
               <div className="absolute top-[38%] right-[4%] xl:right-[6%] z-30 w-40 xl:w-44 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-40 shadow-lg">
                 <div className="bg-white rounded-lg border border-slate-border overflow-hidden">
-                  <img src={panelTaxi} alt="Taxi" className="w-full h-20 xl:h-24 object-cover" />
+                  <img src={panelTaxi} alt="Taxi" loading="lazy" decoding="async" className="w-full h-20 xl:h-24 object-cover" />
                   <div className="py-2 px-3 flex items-center gap-2 bg-white border-t border-slate-border">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#34C759] shadow-[0_0_4px_rgba(52,199,89,0.6)] animate-pulse"></div>
                     <span className="text-[10px] xl:text-xs font-bold text-ink uppercase tracking-wider">Taxi</span>
@@ -231,7 +229,7 @@ export default function HeroSection() {
 
               <div className="absolute bottom-[6%] left-[10%] xl:left-[14%] z-30 w-40 xl:w-44 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-40 shadow-lg">
                 <div className="bg-white rounded-lg border border-slate-border overflow-hidden">
-                  <img src={panelCommercial} alt="Commercial" className="w-full h-20 xl:h-24 object-cover" />
+                  <img src={panelCommercial} alt="Commercial" loading="lazy" decoding="async" className="w-full h-20 xl:h-24 object-cover" />
                   <div className="py-2 px-3 flex items-center gap-2 bg-white border-t border-slate-border">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#34C759] shadow-[0_0_4px_rgba(52,199,89,0.6)] animate-pulse"></div>
                     <span className="text-[10px] xl:text-xs font-bold text-ink uppercase tracking-wider">Commercial</span>
@@ -241,7 +239,7 @@ export default function HeroSection() {
 
               <div className="absolute bottom-[10%] right-[10%] xl:right-[14%] z-30 w-40 xl:w-44 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-40 shadow-lg">
                 <div className="bg-white rounded-lg border border-slate-border overflow-hidden">
-                  <img src={panelPublicSpace} alt="Public Space" className="w-full h-20 xl:h-24 object-cover" />
+                  <img src={panelPublicSpace} alt="Public Space" loading="lazy" decoding="async" className="w-full h-20 xl:h-24 object-cover" />
                   <div className="py-2 px-3 flex items-center gap-2 bg-white border-t border-slate-border">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#34C759] shadow-[0_0_4px_rgba(52,199,89,0.6)] animate-pulse"></div>
                     <span className="text-[10px] xl:text-xs font-bold text-ink uppercase tracking-wider">Public Space</span>
@@ -255,8 +253,8 @@ export default function HeroSection() {
 
         {/* Stats bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 lg:mt-12 pt-6 border-t border-slate-border">
-          {stats.map((stat, i) => (
-            <div key={stat.label} className={`transition-opacity duration-1000 delay-${i * 100} ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          {stats.map((stat) => (
+            <div key={stat.label} className="opacity-100">
               <p className="text-headline-lg tabular-nums text-accent" data-numeric>
                 {stat.value}
               </p>
